@@ -3,6 +3,7 @@
 <html>
 
 <head>
+  <title>Seperatab</title>
   <style>
     button {
       height: 20px;
@@ -10,15 +11,20 @@
       outline: none;
     }
   </style>
+  <script src='jquery-3.5.1.min.js'></script>
+  <link rel='stylesheet' type='text/css' href='style.css'>
+  <script src='popup.js'></script>
 </head>
 
 <body>
-  <h3>TabSeperator</h3>
-  <div>
-    <button id='createGroup'>CreateGroup</button>
-  </div>
-  <div>
-    <button id='disbandGroup'>Disband</button>
+  
+  <div class='dropdown'>
+    <button id= 'button' class='dropbtn'>Button</button>
+    <div id='menuIndex' class='dropdown-content'>
+      <a href='#'>Index 1</a>
+      <a href='#'>Index 2</a>
+      <a href='#'>Index 3</a>
+    </div>
   </div>
 </body>
 

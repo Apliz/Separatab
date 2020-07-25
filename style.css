@@ -1,0 +1,57 @@
+/*
+.dropbtn defines the dropdown list in a default state
+*/
+.dropbtn {
+  background-color: #808080;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/*
+colour that.dropbtn should take when focused/ hovered on
+*/
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #737373;
+}
+
+/*
+positioning the dropdown content correctly
+*/
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/*
+Dropdown background info
+*/
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  z-index: 1;
+}
+
+/*
+Links inside the dropdown index
+*/
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/*
+highlight links in dropdown block on hover
+*/
+.dropdown-content a:hover { background-color: #ddd; }
+
+/*
+show the dropdown menu (THIS USES JS)
+*/
+.show { display: block; }

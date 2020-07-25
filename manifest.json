@@ -1,17 +1,27 @@
 {
   "name": "Tab Seperator",
   "version": "1.0",
-  "description": " group pages into 'n' topics in a browser.",
+  "description": "Tab grouping application.",
   "permissions": [
+    "tabs",
     "declarativeContent",
     "storage"
   ],
   "background": {
     "scripts": [
       "background.js"
-    ],
-    "persistent": false
+    ]
   },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "script.js"
+      ]
+    }
+  ],
   "browser_action": {
     "default_popup": "popup.html",
     "default_icon": {
