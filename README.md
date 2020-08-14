@@ -10,4 +10,15 @@ I want to view all open tabs within a single master index.
 
 As a User,
 So that I can organise my browser experience,
-I want to group tabs together with seperators. 
+I want to group tabs together with seperators.  
+
+---
+
+As a User,
+So that I can manage my tabs,
+I want to see all active tabs in a drop down menu.  
+
+As a user,
+so that I can interact with the extension,
+I want to be able to select different tabs to group. 
+

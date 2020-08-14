@@ -4,28 +4,27 @@
 
 <head>
   <title>Seperatab</title>
-  <style>
-    button {
-      height: 20px;
-      width: 80px;
-      outline: none;
-    }
-  </style>
   <script src='jquery-3.5.1.min.js'></script>
   <link rel='stylesheet' type='text/css' href='style.css'>
-  <script src='popup.js'></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400&display=swap" >
 </head>
 
 <body>
+  <h1 id='title'>Separatab</h1>
+  <h4>Selected tabs: <span id='totalSelected'>placeholder</span></h4>
   
-  <div class='dropdown'>
-    <button id= 'button' class='dropbtn'>Button</button>
-    <div id='menuIndex' class='dropdown-content'>
-      <a href='#'>Index 1</a>
-      <a href='#'>Index 2</a>
-      <a href='#'>Index 3</a>
+  <div class= 'dropdown'>
+
+    <button type='menu' id='indexbtn' class='button'>Index</button>
+    
+    <div id='activeContainer' class='tab'>
+      <ul id='activeTabList' class= 'tab'>
+        <li class='tab'>example 1</li>
+      </ul>
     </div>
   </div>
-</body>
+      
 
+    <script src='popup.js'></script>
+  </body>
 </html>
