@@ -1,13 +1,25 @@
-// chrome.runtime.onStartup.addListener(function () {
-//   chrome.tabs.create({ 'url': 'https://www.google.com' });s
-// });
+const $activeContainer = $('#activeContainer');
+const $activeTabList = $('#activeTabList');
+const $indexbtn = $('#indexbtn');
 
-chrome.runtime.onInstalled.addListener(function () {
-  chrome.storage.sync.set({ message: alert('howdy!') }, function () {
-    alert("a message was saved to storage.");
+const $activeGroupList = $('#activeGroupList');
+const $groupbtn = $('#groupbtn');
+
+function getTabs() {
+  chrome.tabs.query({currentWindow:true},function(tabs){     
+    var titles = [];
+    tabs.forEach(function(tab) {
+      titles += `<p class='tab'><input type='checkbox'>${tab.title}</p>`;
+      return titles;
+    });
+    $('#activeTabList').html(titles);
   });
-});
+};
 
-// chrome.tabs.onCreated.addListener(function () {
-//   console.log("A tab was created and this message was displayed");
-// });
+function resetMenu(list) {
+  list.slideUp();
+};
+
+function getChecked() {
+  $('')
+};

@@ -1,13 +1,14 @@
 $( document ).ready( function() {
-  const $activeContainer = $('#activeContainer');
-  const $activeTabList = $('#activeTabList');
-  const $indexbtn = $('#indexbtn');
 
   $indexbtn.on('click', function() {
-    $activeTabList.slideDown(200);
-    $indexbtn.on('mouseleave', function() {
-      $activeTabList.slideUp(200);
-    });
+    resetMenu($activeGroupList);
+    $activeTabList.slideToggle(500);
+    getTabs(); 
+  });
+
+  $groupbtn.on('click', function() {
+    resetMenu($activeTabList)
+    $activeGroupList.slideToggle(500);
   });
 
 });

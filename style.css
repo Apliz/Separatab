@@ -1,5 +1,9 @@
-* {
+/* * {
   font-family: 'Frank Ruhl Libre', serif;
+} */
+
+body {
+  min-width:400px;
 }
 
 .button {
@@ -13,13 +17,24 @@
   margin:0;
   padding:5%;
   outline: none;
+  display: inline-block;
+  text-align: center;
 }
 
-
+.list {
+  display: none;
+  background-color: rgb(216, 216, 216);
+  border-radius: 5px;
+  width: auto;
+  height: auto;
+  left: 0cm;
+}
 
 .button:hover {
   box-shadow: 0px -5px 10px -10px rgba(0,0,0,0.75);
 }
+
+
 
 
 ul {
@@ -27,11 +42,13 @@ ul {
   margin: 0px;
 }
 
+
+
 #title{
   font-family: 'Frank Ruhl Libre', serif;
   font-weight: 400;
 }
-
+/* 
 #activeTabList{
   display: none;
   background-color: rgb(216, 216, 216);
@@ -40,4 +57,4 @@ ul {
   height: auto;
   left: 0cm;
 
-}
+} */
