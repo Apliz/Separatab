@@ -3,23 +3,32 @@
 <html>
 
 <head>
-  <style>
-    button {
-      height: 20px;
-      width: 80px;
-      outline: none;
-    }
-  </style>
+  <title>Seperatab</title>
+  <script src='jquery-3.5.1.min.js'></script>
+  <link rel='stylesheet' type='text/css' href='style.css'>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400&display=swap" >
 </head>
 
 <body>
-  <h3>TabSeperator</h3>
-  <div>
-    <button id='createGroup'>CreateGroup</button>
-  </div>
-  <div>
-    <button id='disbandGroup'>Disband</button>
-  </div>
-</body>
+  <h1 id='title'>Separatab</h1>
+  <h4>Selected tabs: <span id='totalSelected'>placeholder</span></h4>
+  
+  <div class= 'dropdown'>
 
+    <button type='menu' id='indexbtn' class='button'>Index</button>
+    <button type="menu" id='groupbtn' class='button'>Groups</button>
+      <div class= 'tabList'>
+        <ul id= 'activeTabList' class='tabList'></ul>
+        <button id='createGroupBtn'>Submit</button>
+      </div>
+      <div class='groupList'>
+        <ul id='activeGroupList' class= 'groupList'>Test</ul>
+        <button id='disbandGroupBtn'>Disband</button>
+      </div>
+  </div>
+      
+    <script src='popup.js'></script>
+    <script src='background.js'></script>
+    <script src='constants.js'></script>
+  </body>
 </html>
