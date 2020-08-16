@@ -1,10 +1,3 @@
-const $activeContainer = $('#activeContainer');
-const $activeTabList = $('#activeTabList');
-const $indexbtn = $('#indexbtn');
-
-const $activeGroupList = $('#activeGroupList');
-const $groupbtn = $('#groupbtn');
-
 function getTabs() {
   chrome.tabs.query({currentWindow:true},function(tabs){     
     var titles = [];
@@ -12,14 +5,21 @@ function getTabs() {
       titles += `<p class='tab'><input type='checkbox'>${tab.title}</p>`;
       return titles;
     });
-    $('#activeTabList').html(titles);
+    $activeTabList.html(titles);
   });
 };
 
-function resetMenu(list) {
-  list.slideUp();
+function toggleTabList() {
+  $tabListClass.slideToggle(500);
+  $createGroupBtn.toggle();
 };
 
-function getChecked() {
-  $('')
+function toggleGroupList() {
+  $groupListClass.slideToggle(500);
+  $disbandGroupBtn.toggle();
+};
+
+function resetMenu(list, btn) {
+  list.slideUp();
+  btn.hide();
 };

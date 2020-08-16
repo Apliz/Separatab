@@ -1,14 +1,14 @@
 $( document ).ready( function() {
 
-  $indexbtn.on('click', function() {
-    resetMenu($activeGroupList);
-    $activeTabList.slideToggle(500);
-    getTabs(); 
+  $indexBtn.on('click', function() {
+    resetMenu($groupListClass, $disbandGroupBtn);
+    toggleTabList();
+    // getTabs(); 
   });
 
-  $groupbtn.on('click', function() {
-    resetMenu($activeTabList)
-    $activeGroupList.slideToggle(500);
+  $groupBtn.on('click', function() {
+    resetMenu($tabListClass, $createGroupBtn)
+    toggleGroupList();
   });
 
 });
