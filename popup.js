@@ -8,11 +8,16 @@ $( document ).ready( function() {
 
   $groupBtn.on('click', function() {
     resetMenu($tabListClass, $createGroupBtn)
+    compileNewGroup();
     toggleGroupList();
   });
 
   $createGroupBtn.on('click', function() {
-    getGroup();
+    extractGroupFromIndex();
+  });
+
+  $disbandGroupBtn.on('click', function() {
+    resetStorage();
   });
 
 });
