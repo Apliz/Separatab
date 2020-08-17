@@ -11,31 +11,50 @@ function getTabs() {
 };
 
 function getGroup() {
-  var group = [];
-  var selectedforGrouping = $('input[name="listElement"]:checked');
-  selectedforGrouping.each( function() {
-    var int = parseInt(this.value);
-    alert('area 1')
-    alert(typeof int);
-    chrome.tabs.query({index:int}, function(selected) {
-      // group += `<input name='listElement'type='checkbox' value=${tab.index}><label for='listElement'>${selected.title}</label><br>`
-      alert('area 2')
+
+  var $selectedforGrouping = $('input[name="listElement"]:checked');
+  var int = [];
+  $selectedforGrouping.each( function() {
+    int.push(parseInt(this.value));
+    return int;
+    // this can be turened into a helper method
+  }); 
+  //check to see if its working
+  alert(int[0]);
+  alert(int[1]); // end of check
+  
+  console.log(int);
+  int.forEach(function(number) {
+    console.log('do we get here');
+  
+    chrome.tabs.query({index:number, currentWindow:true}, function(selected) {
+      
       selected.forEach(function(test) {
         alert(test.title);
+        alert('selected title');
+
+        //it will now select the tbas specified and b ring them forwards.
+        // questions:
+        // am I doing a seperate query when I don't need to? (I'm doind a similar call in getTabs, can I make it do 2 functions because the code is fundamentally similar?)
+        // how do I take the title and add it to the group list under a new element?
+        /*
+          It has to be under a new element because then I can register a fresh onClick event and ostart physically moving tabs.
+        */
+
+        // group += `<p>testing this</p><br>`
+        
       });
+      // $('#activeGroupList').html("<p>testing testing 123</p>");
+
+      // chrome.storage.sync.set({selected:group}, function() {
+
+      // });
+
     });
-    alert('area 3')
-    alert(group);
-    $activeGroupList.html(group);
 
-    // The above structure will skip the query statement under certain circumstances. Need more testing to know why..
-    // I suspect it's to do with the selected checkboxes and their index, or maybe the structure of the HTML.
-
-    //next action: make the basic functionality work (it nearly does) and then refactor the HTML to refactor this mess. 
-    // peace out. -A
   });
 
-  
+
 };
 
 function toggleTabList() {

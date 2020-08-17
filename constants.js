@@ -10,3 +10,4 @@ const $tabListClass = $('.tabList');
 const $groupListClass = $('.groupList');
 
 const $listElement = $('#listElement');
+
