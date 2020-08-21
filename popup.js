@@ -2,18 +2,18 @@ $( document ).ready( function() {
 
   $indexBtn.on('click', function() {
     resetMenu($groupListClass, $disbandGroupBtn);
+    getTabs();
     toggleTabList();
-    getTabs(); 
   });
 
   $groupBtn.on('click', function() {
     resetMenu($tabListClass, $createGroupBtn)
-    compileNewGroup();
     toggleGroupList();
   });
-
+  
   $createGroupBtn.on('click', function() {
-    extractGroupFromIndex();
+    getGroupHTML()
+    // compileNewGroup();
   });
 
   $disbandGroupBtn.on('click', function() {
