@@ -9,6 +9,7 @@
   ],
   "background": {
     "scripts": [
+      "backgroupSripts.js",
       "background.js"
     ]
   },

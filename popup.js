@@ -1,19 +1,22 @@
 $( document ).ready( function() {
+  
 
   $indexBtn.on('click', function() {
     resetMenu($groupListClass, $disbandGroupBtn);
-    getTabs();
+
+    queryTabs()
+    // loadTabs();
     toggleTabList();
   });
 
   $groupBtn.on('click', function() {
     resetMenu($tabListClass, $createGroupBtn)
+    displayLoadedGroupHTML();
     toggleGroupList();
   });
   
   $createGroupBtn.on('click', function() {
     getGroupHTML()
-    // compileNewGroup();
   });
 
   $disbandGroupBtn.on('click', function() {
@@ -21,3 +24,6 @@ $( document ).ready( function() {
   });
 
 });
+
+
+
