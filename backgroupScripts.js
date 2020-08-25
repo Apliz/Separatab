@@ -1,12 +1,12 @@
 
 function queryTabs() {
   var titles = [];
-    chrome.tabs.query({currentWindow:true},function(tabs){     
-      for (tab of tabs) {
-        titles += `<input name='listElement'type='checkbox' value=${tab.index}><label for='listElement'>${tab.title}</label><br>`;
-      };
-      $activeTabList.html(titles);
-    });
+  chrome.tabs.query({ currentWindow: true }, function (tabs) {
+    for (tab of tabs) {
+      titles += `<input name='listElement'type='checkbox' value=${tab.index}><label for='listElement'>${tab.title}</label><br>`;
+    };
+    $activeTabList.html(titles);
+  });
 }
 
 
