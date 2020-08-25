@@ -9,8 +9,8 @@
   ],
   "background": {
     "scripts": [
-      "backgroupSripts.js",
-      "background.js"
+      "background.js",
+      "backgroundcripts.js"
     ]
   },
   "content_scripts": [

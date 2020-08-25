@@ -11,3 +11,4 @@ const $groupListClass = $('.groupList');
 
 const $listElement = $('#listElement');
 
+var firstLoopPredicate = true;
