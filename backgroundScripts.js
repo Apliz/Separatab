@@ -34,70 +34,89 @@ function getGroupHTML() {
   };
 };
 
-function iterateGroupIDNames(modifier = 0, save = false) {
-
-  var num = $('.groupings').length + modifier;
-  var iteratingUlId = "group" + `${num + 1}`;
-  var iteratingBtnId = "group" + `${num + 1}` + "btn";
-  var iteratingDivId = "group" + `${num + 1}` + "div";
-  var array = [iteratingDivId, iteratingBtnId, iteratingUlId];
-  console.log('how many times does this function get called?')
-  
-  if (save == true) {
-
-    chrome.storage.local.set({'iteratingID': array}, function() {
-      console.log('///////////////////')
-      console.log('saved' + array);
-      console.log('///////////////////')
-  
-    });
-  }
-  return array;
-};
 
 async function displayLoadedGroupHTML() {
 
+  var iteratedID;
   const loadedPredicate = await getFirstLoopPredicate();
-  // if (loadedPredicate() === void(undefined)) {
-  //   continue;  
-  // } else {
-    
-  // };
+ 
   const loadedHTML = await loadMasterGroup();
+  
+  console.log(loadedHTML.master);
 
   $activeGroupList.append(loadedHTML.master)
-  console.log(iterateGroupIDNames()[2]);
-  const iteratedIDCollection = iterateGroupIDNames();
-  const iterDiv = iteratedIDCollection[0];
-  const iterBtn = iteratedIDCollection[1];
-  const iterUl = iteratedIDCollection[2];
+  // console.log(iterateGroupIDNames()[2]);
+
+  if (loadedHTML.master == void(0)) {
+    // do first loop stuff here
+    iteratedID = startIDIteration();
+    console.log(iteratedID);
+    console.log("##########");
+
+  } else {
+    console.log('2nd loop onwarsds');
+    iteratedID = await getIDIteration();
+    iteratedID = iteratedID.iteratingID;
+    console.log('ITERATED ID == ' + iteratedID);
+    console.log('---------------');
+  };
+
   
-  
+  // const iterDiv = iteratedIDCollection[0];
+  // const iterBtn = iteratedIDCollection[1];
+  // const iterUl = iteratedIDCollection[2];
+
   
   chrome.storage.local.get('group', function (result) {
 
     console.log('--------------------')
-    console.log(`#${iterUl}`)
+    console.log(`#group${iteratedID}`)
     console.log('--------------------')
 
 
-    var divCasing = `<div id='${iterDiv}' class='groupings'><br><button id='${iterBtn}'>${iterUl.capitalize()}</button><ul id='${iterUl}'></ul></div>`
+    var divCasing = `<div id='group${iteratedID}div' class='groupings'><br><button id='group${iteratedID}btn'>Group ${iteratedID}</button><ul id='group${iteratedID}'></ul></div>`
     $activeGroupList.append(divCasing);
 
-    console.log(iterUl);
+    
     if (loadedPredicate === void(0)) {
-      $(`#${iterUl}`).append(result.group);
+      $(`#group${iteratedID}`).append(result.group);
       console.log('the result was appended');
       setFirstLoopPredicate(false);
     } else {
-      $(`#${iterUl}`).after(result.group);
+      $(`#group${iteratedID}`).after(result.group);
       console.log('the result was aftered');
     };
-    
 
-    storeMasterGroup($(`#${iterDiv}`).html());
+    storeMasterGroup($(`#group${iteratedID}`).html());
+    iteratedID += 1;
+    console.log('NEW ITERATED ID AT BOTTOM OF METHOD');
+    console.log(iteratedID);
+    console.log('//////////////////////')
+    // increase the groupID values
+    setIDIteration(iteratedID)
+
 
   });
+};
+
+function startIDIteration(modifier = 0) {
+  //this needs to only return a number
+  var num = $('.groupings').length + modifier;
+  var iteratingID = num + 1;
+  return iteratingID;
+};
+
+function getIDIteration() {
+  return new Promise((resolve) => {
+    chrome.storage.local.get('iteratingID', function(result) {
+      console.log(result.iteratingID);
+      resolve(result); 
+    })
+  });
+};
+
+function setIDIteration(integer) {
+  chrome.storage.local.set({'iteratingID': integer});
 };
 
 function setFirstLoopPredicate(setting) {
@@ -114,8 +133,7 @@ function getFirstLoopPredicate() {
 };
 
 function storeMasterGroup(data) {
-  chrome.storage.local.set({ 'master' : data }, function() {
-  });
+  chrome.storage.local.set({ 'master' : data });
 };
 
 async function loadMasterGroup() {
